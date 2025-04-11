@@ -1,11 +1,15 @@
 import "./App.css";
+import Home from "./components/Home";
+import Profile from "./components/profile";
+import Welcome from "./components/Welcome";
+import Login from "./Authetication/Login";
+import Registration from "./Authetication/Registration";
 
 function App() {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">welcom ehome</h1>
-      <h2>welcome home</h2>
-    </>
+    <div>
+      <Home />
+    </div>
   );
 }
 
