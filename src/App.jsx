@@ -4,7 +4,7 @@ import WelcomePage from "./pages/WelcomeScreen";
 import HomePage from "./pages/Homescreen";
 import ChatUIS from "./components/ChatUi";
 import { useState } from "react";
-import ChatUI from "./components/ChatUi";
+import ContraceptiveUI from "./components/Contraceptive";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -16,7 +16,7 @@ function App() {
         path="/welcome"
         element={
           !isAuthenticated ? (
-            <ChatUI onLogin={() => setIsAuthenticated(true)} />
+            <ContraceptiveUI onLogin={() => setIsAuthenticated(true)} />
           ) : (
             <Navigate to="/home" replace />
           )
