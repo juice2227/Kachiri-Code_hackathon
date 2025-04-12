@@ -1,15 +1,34 @@
-import "./App.css";
-import Home from "./components/Home";
-import Profile from "./components/profile";
-import Welcome from "./components/Welcome";
-import Login from "./Authetication/Login";
-import Registration from "./Authetication/Registration";
+import { Routes, Route, Navigate } from "react-router-dom";
+import SplashScreen from "./pages/SplashScreen";
+import WelcomePage from "./pages/WelcomeScreen";
+import HomePage from "./pages/Homescreen";
+import ChatUIS from "./components/ChatUi";
+import { useState } from "react";
+import ChatUI from "./components/ChatUi";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   return (
-    <div>
-      <Home />
-    </div>
+    <Routes>
+      <Route path="/" element={<SplashScreen />} />
+      <Route
+        path="/welcome"
+        element={
+          !isAuthenticated ? (
+            <ChatUI onLogin={() => setIsAuthenticated(true)} />
+          ) : (
+            <Navigate to="/home" replace />
+          )
+        }
+      />
+      <Route
+        path="/home"
+        element={
+          isAuthenticated ? <HomePage /> : <Navigate to="/welcome" replace />
+        }
+      />
+    </Routes>
   );
 }
 
